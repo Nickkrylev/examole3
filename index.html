@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glovo Courier App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #ffc000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+        }
+
+        .status {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status div {
+            text-align: center;
+        }
+
+        .status .status-indicator {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .task-list {
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .task {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task p {
+            font-size: 1rem;
+        }
+
+        .footer {
+            padding: 15px;
+            background-color: #f1f1f1;
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer button {
+            background-color: #ffc000;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .footer button:hover {
+            background-color: #ff9900;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        .popup p {
+            margin-bottom: 20px;
+        }
+
+        .popup button {
+            background-color: #ffc000;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #ff9900;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Glovo Courier</h1>
+        </div>
+
+        <!-- Status Section -->
+        <div class="status">
+            <div>
+                <p>Status:</p>
+                <p class="status-indicator">Online</p>
+            </div>
+            <div>
+                <p>Current Orders:</p>
+                <p class="status-indicator">3</p>
+            </div>
+        </div>
+
+        <!-- Task List -->
+        <div class="task-list">
+            <div class="task">
+                <p>Order #12345</p>
+                <button onclick="showPopup('Details about Order #12345')">Details</button>
+            </div>
+            <div class="task">
+                <p>Order #12346</p>
+                <button onclick="showPopup('Details about Order #12346')">Details</button>
+            </div>
+            <div class="task">
+                <p>Order #12347</p>
+                <button onclick="showPopup('Details about Order #12347')">Details</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <button onclick="showPopup('Shift started')">Start Shift</button>
+            <button onclick="showPopup('Shift ended')">End Shift</button>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <p id="popup-message"></p>
+        <button onclick="hidePopup()">Close</button>
+    </div>
+
+    <script>
+        function showPopup(message) {
+            const popup = document.getElementById('popup');
+            const popupMessage = document.getElementById('popup-message');
+            popupMessage.textContent = message;
+            popup.style.display = 'block';
+        }
+
+        function hidePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
